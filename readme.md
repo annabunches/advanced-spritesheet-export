@@ -19,7 +19,8 @@ To install, go to Aseprite's Settings -> Extensions -> Add Extension, and select
 
 ## Additional Notes
 
-* Toggling the advanced export settings on a layer will modify the layer colors. (This may be configurable in a future update)
+* Toggling the advanced export settings on a layer will modify the layer colors. If you are using layer colors for other purposes, this extension will not work well for you. (This may be configurable in a future update)
+* Ignored layers always take precedence over merging; if a sublayer in a group is ignored, it will not be merged into the final sprite.
 
 
 ## Copyright Notice

@@ -74,14 +74,19 @@ end
 
 local function safeSetColor(layer, color)
     pixelValue = layer.color.rgbaPixel
-
+--[[     print("safeSetColor: " .. pixelValue)
+    print(BASE_COLOR.rgbaPixel)
+    print(IGNORE_COLOR.rgbaPixel)
+    print(IGNORE_SUBCOLOR.rgbaPixel)
+    print(MERGE_COLOR.rgbaPixel)
+    print(MERGE_SUBCOLOR.rgbaPixel) ]]
     if (pixelValue ~= BASE_COLOR.rgbaPixel and
         pixelValue ~= IGNORE_COLOR.rgbaPixel and
         pixelValue ~= IGNORE_SUBCOLOR.rgbaPixel and
         pixelValue ~= MERGE_COLOR.rgbaPixel and
         pixelValue ~= MERGE_SUBCOLOR.rgbaPixel) then
-            print("DEBUG: not setting color")
-            return
+--[[             print("DEBUG: not setting color")
+ ]]            return
     end
     layer.color = color
 end

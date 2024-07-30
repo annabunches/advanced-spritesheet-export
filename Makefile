@@ -1,2 +1,2 @@
 all:
-	zip -f ./aseprite-advanced-spritesheets *.lua LICENSE
+	zip ./advanced-spritesheets.aseprite-extension *.lua package.json LICENSE

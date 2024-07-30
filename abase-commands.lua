@@ -1,5 +1,5 @@
 -- New commands to be executed via Aseprite menus / keyboard shortcuts
-local sprt = require "abase-sprite"
+local layerUtils = require "abase-layer"
 
 local function ExportSpritesheetAdvanced()
     if not app.sprite then
@@ -8,9 +8,9 @@ local function ExportSpritesheetAdvanced()
 
     local spr = Sprite(app.sprite)
 
-    sprt.DeleteLayers(spr, spr.layers)
-    sprt.FlattenLayers(spr.layers)
-    sprt.RevealLayers(spr.layers)
+    layerUtils.DeleteLayers(spr, spr.layers)
+    layerUtils.FlattenLayers(spr.layers)
+    layerUtils.RevealLayers(spr.layers)
 
     app.command.ExportSpriteSheet {
         splitLayers = true
@@ -26,7 +26,7 @@ local function ToggleIgnore()
     else
         layer.properties(extKey).ignored = true
     end
-    sprt.SetColorFromRoot(layer)
+    layerUtils.SetColorFromRoot(layer)
 end
 
 local function ToggleExportAsSprite()
@@ -36,7 +36,7 @@ local function ToggleExportAsSprite()
     else
         layer.properties(extKey).exportedAsSprite = true
     end
-    sprt.SetColorFromRoot(layer)
+    layerUtils.SetColorFromRoot(layer)
 end
 
 local export = {

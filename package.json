@@ -10,7 +10,9 @@
     "categories": [ "Scripts" ],
     "contributes": {
         "scripts": [
-            { "path": "./advanced-spritesheet-export.lua" }
+            { "path": "./advanced-spritesheet-export.lua" },
+            { "path": "./abase-commands.lua" },
+            { "path": "./abase-sprite.lua" }
         ]
     }
 }

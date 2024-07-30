@@ -1,4 +1,4 @@
-# Advanced spritesheet functionality for Aseprite
+# Advanced spritesheet exporter for Aseprite
 
 This extension adds a more sophisticated spritesheet export command to Aseprite.
 
@@ -13,10 +13,13 @@ To install, go to Aseprite's Settings -> Extensions -> Add Extension, and select
 
 ## Usage
 
-* All layers are exported by default. To ignore a layer, tk.
-* To export a group as a single sprite, tk
+* All layers are exported by default. To ignore a layer or group, select Layer -> Advanced Export -> Toggle Ignore.
+* To export a layer group as a single sprite, select Layer -> Advanced Export -> Toggle Merge Group.
 * Invoke the tool via File -> Export -> Export Sprite Sheet (Advanced).
-* Use the Sprite Sheet Export dialog as normal, but make sure Layers is set to "Visible Layers."
+
+## Additional Notes
+
+* Toggling the advanced export settings on a layer will modify the layer colors. (This may be configurable in a future update)
 
 
 ## Copyright Notice

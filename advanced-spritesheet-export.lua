@@ -1,6 +1,7 @@
 extKey = "annabunches/abase" -- this must come before we require 'abase-commands'
 
 local cmd = require "abase-commands"
+local listeners = require "abase-listeners"
 
 function init(plugin)
   plugin:newCommand{
@@ -76,4 +77,13 @@ function init(plugin)
       return app.layer.isGroup
     end
   }
+
+  app.events:on(
+    "aftercommand",
+    function(ev)
+      if (ev.name == "NewLayer") then
+        listeners.RecolorLayers()
+      end
+    end
+  )
 end

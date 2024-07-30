@@ -11,6 +11,7 @@
     "contributes": {
         "scripts": [
             { "path": "./advanced-spritesheet-export.lua" },
+            { "path": "./abase-listeners.lua" },
             { "path": "./abase-commands.lua" },
             { "path": "./abase-sprite.lua" }
         ]

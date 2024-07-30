@@ -4,7 +4,7 @@ local cmd = require "abase-commands"
 
 function init(plugin)
   plugin:newCommand{
-    id="AnnabunchesASEExportSpritesheetAdvanced",
+    id="ABASEExportSpritesheetAdvanced",
     title="Export Spritesheet (Advanced)",
     group="file_export_1",
     onclick=function()
@@ -19,19 +19,56 @@ function init(plugin)
     group="layer_popup_merge"
   }
 
-  plugin:newCommand{
-    id="AnnabunchesASEToggleIgnoreLayer",
-    title="Ignore on Export",
+  plugin:newMenuSeparator{
+    group="layer_merge"
+  }
+
+  plugin:newMenuGroup{
+    id="abase_layer_settings",
+    title="Advanced Export",
+    group="layer_merge",
+  }
+
+  plugin:newMenuGroup{
+    id="abase_layer_settings_popup",
+    title="Advanced Export",
     group="layer_popup_merge",
+  }
+
+  plugin:newCommand{
+    id="ABASEToggleIgnoreLayer",
+    title="Toggle Ignore",
+    group="abase_layer_settings",
     onclick=function()
       cmd.ToggleIgnore()
     end
   }
 
   plugin:newCommand{
-    id="AnnabunchesASEToggleExportAsSprite",
-    title="Export as Sprite",
-    group="layer_popup_merge",
+    id="ABASEToggleIgnoreLayerPopup",
+    title="Toggle Ignore",
+    group="abase_layer_settings_popup",
+    onclick=function()
+      cmd.ToggleIgnore()
+    end
+  }
+
+  plugin:newCommand{
+    id="ABASEToggleExportAsSprite",
+    title="Toggle Merge Group",
+    group="abase_layer_settings",
+    onclick=function()
+      cmd.ToggleExportAsSprite()
+    end,
+    onnenabled=function()
+      return app.layer.isGroup
+    end
+  }
+
+  plugin:newCommand{
+    id="ABASEToggleExportAsSpritePopup",
+    title="Toggle Merge Group",
+    group="abase_layer_settings_popup",
     onclick=function()
       cmd.ToggleExportAsSprite()
     end,

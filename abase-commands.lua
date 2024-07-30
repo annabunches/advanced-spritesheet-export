@@ -8,9 +8,9 @@ local function ExportSpritesheetAdvanced()
 
     local spr = Sprite(app.sprite)
 
-    sprt.deleteLayers(spr, spr.layers)
-    sprt.flattenLayers(spr.layers)
-    sprt.revealLayers(spr.layers)
+    sprt.DeleteLayers(spr, spr.layers)
+    sprt.FlattenLayers(spr.layers)
+    sprt.RevealLayers(spr.layers)
 
     app.command.ExportSpriteSheet {
         splitLayers = true
@@ -26,7 +26,7 @@ local function ToggleIgnore()
     else
         layer.properties(extKey).ignored = true
     end
-    sprt.setColor(layer)
+    sprt.SetColorFromRoot(layer)
 end
 
 local function ToggleExportAsSprite()
@@ -36,7 +36,7 @@ local function ToggleExportAsSprite()
     else
         layer.properties(extKey).exportedAsSprite = true
     end
-    sprt.setColor(layer)
+    sprt.SetColorFromRoot(layer)
 end
 
 local export = {

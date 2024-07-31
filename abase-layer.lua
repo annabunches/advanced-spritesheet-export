@@ -1,4 +1,4 @@
--- Functions for modifying a sprite
+-- Functions for modifying a sprite's layers based on configuration flags
 
 -- Deletes any layers with the 'ignored' property.
 local function DeleteLayers(spr, layers)

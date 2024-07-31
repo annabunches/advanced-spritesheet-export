@@ -10,6 +10,7 @@ To install, go to Aseprite's Settings -> Extensions -> Add Extension, and select
 
 * Choose which layers to export, regardless of visibility.
 * Export groups as a single sprite.
+* Configure layer settings via Layer menu, right click menu, or keyboard shortcut.
 
 ## Usage
 

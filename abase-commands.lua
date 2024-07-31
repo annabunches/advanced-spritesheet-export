@@ -1,5 +1,6 @@
 -- New commands to be executed via Aseprite menus / keyboard shortcuts
 local layerUtils = require "abase-layer"
+local colorUtils = require "abase-color"
 
 local function ExportSpritesheetAdvanced()
     if not app.sprite then
@@ -26,7 +27,7 @@ local function ToggleIgnore()
     else
         layer.properties(extKey).ignored = true
     end
-    layerUtils.SetColorFromRoot(layer)
+    colorUtils.SetColorFromRoot(layer)
 end
 
 local function ToggleExportAsSprite()
@@ -36,7 +37,7 @@ local function ToggleExportAsSprite()
     else
         layer.properties(extKey).exportedAsSprite = true
     end
-    layerUtils.SetColorFromRoot(layer)
+    colorUtils.SetColorFromRoot(layer)
 end
 
 local export = {

@@ -13,9 +13,9 @@ To install, go to Aseprite's Settings -> Extensions -> Add Extension, and select
 
 ## Usage
 
-* All layers are exported by default. To ignore a layer or group, select Layer -> Advanced Export -> Toggle Ignore.
-* To export a layer group as a single sprite, select Layer -> Advanced Export -> Toggle Merge Group.
-* Invoke the tool via File -> Export -> Export Sprite Sheet (Advanced).
+* All layers are exported by default. To ignore the active layer or group, select Layer -> Advanced Export -> Toggle Ignore. (default keyboard shortcut: Ctrl+Alt+I)
+* To export a layer group as a single sprite, select Layer -> Advanced Export -> Toggle Merge Group. (default keyboard shortcut: Ctrl+Alt+M)
+* Invoke the tool via File -> Export -> Export Sprite Sheet (Advanced). (default keyboard shortcut: Ctrl+Alt+E)
 
 ## Additional Notes
 

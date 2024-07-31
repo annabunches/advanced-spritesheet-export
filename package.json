@@ -2,18 +2,18 @@
     "name": "advanced-spritesheets",
     "displayName": "Advanced Spritesheets",
     "description": "Improved spritesheet export functionality for Aseprite.",
-    "version": "0.0.3",
+    "version": "0.0.6",
     "author": { "name": "Anna Wiggins",
                 "email": "annabunches@gmail.com",
                 "url": "https://annabunches.net" },
     "license": "GPL-3.0",
-    "categories": [ "Scripts" ],
+    "categories": [ "Scripts", "Keys" ],
     "contributes": {
         "scripts": [
-            { "path": "./advanced-spritesheet-export.lua" },
-            { "path": "./abase-listeners.lua" },
-            { "path": "./abase-commands.lua" },
-            { "path": "./abase-sprite.lua" }
+            { "path": "./advanced-spritesheet-export.lua" }
+        ],
+        "keys": [
+            { "path": "./advanced-spritesheet-export.aseprite-keys"}
         ]
     }
 }

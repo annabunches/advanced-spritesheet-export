@@ -20,8 +20,7 @@ local function ExportSpritesheetAdvanced()
     spr:close()
 end
 
-local function ToggleIgnore()
-    local layer = app.layer
+local function toggleIgnoreLayer(layer)
     if (layer.properties(extKey).ignored) then
         layer.properties(extKey).ignored = false
     else
@@ -30,14 +29,31 @@ local function ToggleIgnore()
     colorUtils.SetColorFromRoot(layer)
 end
 
-local function ToggleExportAsSprite()
-    local layer = app.layer
+-- Toggle ignore for all selected layers
+-- TODO: should this behavior change when selected layers start with mixed state?
+local function ToggleIgnore()
+    for _, layer in ipairs(app.range.layers) do
+        toggleIgnoreLayer(layer)
+    end
+end
+
+local function toggleExportAsSpriteLayer(layer)
+    if not layer.isGroup then return end
+
     if (layer.properties(extKey).exportedAsSprite) then
         layer.properties(extKey).exportedAsSprite = false
     else
         layer.properties(extKey).exportedAsSprite = true
     end
     colorUtils.SetColorFromRoot(layer)
+end
+
+-- Toggle Merge on Export for all selected group layers
+-- TODO: should this behavior change when selected layers start with mixed state?
+local function ToggleExportAsSprite()
+    for _, layer in ipairs(app.range.layers) do
+        toggleExportAsSpriteLayer(layer)
+    end
 end
 
 local export = {

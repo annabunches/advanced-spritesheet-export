@@ -1,9 +1,11 @@
--- Functions for modifying a sprite's layers based on configuration flags
+-- Functions for modifying layers recursively based on configuration flags
+
+local p = require "abase-properties"
 
 -- Deletes any layers with the 'ignored' property.
 local function DeleteLayers(spr, layers)
     for _, layer in ipairs(layers) do
-        if layer.properties(extKey).ignored then
+        if p.IsIgnored(layer) then
             spr:deleteLayer(layer)
         elseif layer.isGroup then
             DeleteLayers(spr, layer.layers)
@@ -19,7 +21,7 @@ local function FlattenLayers(layers)
             goto continue
         end
 
-        if layer.properties(extKey).exportedAsSprite then
+        if p.IsMerged(layer) then
             app.range.layers = {layer}
             app.command.FlattenLayers(false)
         else

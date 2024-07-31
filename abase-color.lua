@@ -1,3 +1,7 @@
+-- functions for modifying a layer's color
+
+local p = require "abase-properties"
+
 local BASE_COLOR = Color {
     r = 0,
     g = 0,
@@ -27,31 +31,24 @@ local MERGE_SUBCOLOR = Color {
 
 local function safeSetColor(layer, color)
     pixelValue = layer.color.rgbaPixel
---[[     print("safeSetColor: " .. pixelValue)
-    print(BASE_COLOR.rgbaPixel)
-    print(IGNORE_COLOR.rgbaPixel)
-    print(IGNORE_SUBCOLOR.rgbaPixel)
-    print(MERGE_COLOR.rgbaPixel)
-    print(MERGE_SUBCOLOR.rgbaPixel) ]]
     if (pixelValue ~= BASE_COLOR.rgbaPixel and
         pixelValue ~= IGNORE_COLOR.rgbaPixel and
         pixelValue ~= IGNORE_SUBCOLOR.rgbaPixel and
         pixelValue ~= MERGE_COLOR.rgbaPixel and
         pixelValue ~= MERGE_SUBCOLOR.rgbaPixel) then
---[[             print("DEBUG: not setting color")
- ]]            return
+            return
     end
     layer.color = color
 end
 
 -- set the color of a layer and its sublayers based on the extension properties
 local function SetColor(layer, subColor)
-    if (layer.properties(extKey).ignored) then
+    if p.IsIgnored(layer) then
         safeSetColor(layer, IGNORE_COLOR)
         subColor = IGNORE_SUBCOLOR
     elseif subColor == IGNORE_SUBCOLOR then
         safeSetColor(layer, subColor)
-    elseif (layer.properties(extKey).exportedAsSprite) then
+    elseif p.IsMerged(layer) then
         safeSetColor(layer, MERGE_COLOR)
         subColor = MERGE_SUBCOLOR
     elseif subColor == MERGE_SUBCOLOR then

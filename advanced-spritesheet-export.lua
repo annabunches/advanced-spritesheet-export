@@ -1,5 +1,3 @@
-extKey = "annabunches/abase" -- this must come before we require 'abase-commands'
-
 local cmd = require "abase-commands"
 local listeners = require "abase-listeners"
 

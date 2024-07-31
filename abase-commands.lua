@@ -1,6 +1,7 @@
 -- New commands to be executed via Aseprite menus / keyboard shortcuts
-local layerUtils = require "abase-layer"
-local colorUtils = require "abase-color"
+local l = require "abase-layer"
+local c = require "abase-color"
+local p = require "abase-properties"
 
 local function ExportSpritesheetAdvanced()
     if not app.sprite then
@@ -9,9 +10,9 @@ local function ExportSpritesheetAdvanced()
 
     local spr = Sprite(app.sprite)
 
-    layerUtils.DeleteLayers(spr, spr.layers)
-    layerUtils.FlattenLayers(spr.layers)
-    layerUtils.RevealLayers(spr.layers)
+    l.DeleteLayers(spr, spr.layers)
+    l.FlattenLayers(spr.layers)
+    l.RevealLayers(spr.layers)
 
     app.command.ExportSpriteSheet {
         splitLayers = true
@@ -20,39 +21,35 @@ local function ExportSpritesheetAdvanced()
     spr:close()
 end
 
-local function toggleIgnoreLayer(layer)
-    if (layer.properties(extKey).ignored) then
-        layer.properties(extKey).ignored = false
-    else
-        layer.properties(extKey).ignored = true
-    end
-    colorUtils.SetColorFromRoot(layer)
-end
-
 -- Toggle ignore for all selected layers
--- TODO: should this behavior change when selected layers start with mixed state?
 local function ToggleIgnore()
+    -- Determine whether we are setting or clearing the flag
+    local ignore = false
     for _, layer in ipairs(app.range.layers) do
-        toggleIgnoreLayer(layer)
+        if not p.IsIgnored(layer) then
+            ignore = true
+        end
     end
-end
 
-local function toggleExportAsSpriteLayer(layer)
-    if not layer.isGroup then return end
-
-    if (layer.properties(extKey).exportedAsSprite) then
-        layer.properties(extKey).exportedAsSprite = false
-    else
-        layer.properties(extKey).exportedAsSprite = true
+    for _, layer in ipairs(app.range.layers) do
+        p.SetIgnored(layer, ignore)
+        c.SetColorFromRoot(layer)
     end
-    colorUtils.SetColorFromRoot(layer)
 end
 
 -- Toggle Merge on Export for all selected group layers
--- TODO: should this behavior change when selected layers start with mixed state?
 local function ToggleExportAsSprite()
+    -- Determine whether we are setting or clearing the flag
+    local merge = false
     for _, layer in ipairs(app.range.layers) do
-        toggleExportAsSpriteLayer(layer)
+        if layer.isGroup and not p.IsMerged(layer) then
+            merge = true
+        end
+    end
+    
+    for _, layer in ipairs(app.range.layers) do
+        p.SetMerged(layer, merge)
+        c.SetColorFromRoot(layer)
     end
 end
 

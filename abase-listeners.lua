@@ -1,12 +1,11 @@
-local layerUtils = require "abase-layer"
+local colorUtils = require "abase-color"
 
 -- recolors all layers in the current sprite
 local function RecolorLayers()
   for i, layer in ipairs(app.sprite.layers) do
-    layerUtils.SetColor(layer)
+    colorUtils.SetColor(layer)
   end
 end
-
 
 local export = {
   RecolorLayers = RecolorLayers,

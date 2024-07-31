@@ -59,9 +59,11 @@ function init(plugin)
     title="Toggle Merge Group",
     group="abase_layer_settings",
     onclick=function()
-      cmd.ToggleExportAsSprite()
+      if app.layer.isGroup then
+        cmd.ToggleExportAsSprite()
+      end
     end,
-    onnenabled=function()
+    onenabled=function()
       return app.layer.isGroup
     end
   }
@@ -71,9 +73,11 @@ function init(plugin)
     title="Toggle Merge Group",
     group="abase_layer_settings_popup",
     onclick=function()
-      cmd.ToggleExportAsSprite()
+      if app.layer.isGroup then
+        cmd.ToggleExportAsSprite()
+      end
     end,
-    onnenabled=function()
+    onenabled=function()
       return app.layer.isGroup
     end
   }

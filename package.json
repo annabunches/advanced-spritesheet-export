@@ -2,7 +2,7 @@
     "name": "advanced-spritesheets",
     "displayName": "Advanced Spritesheets",
     "description": "Improved spritesheet export functionality for Aseprite.",
-    "version": "0.1",
+    "version": "0.1.1",
     "author": { "name": "Anna Wiggins",
                 "email": "annabunches@gmail.com",
                 "url": "https://annabunches.net" },

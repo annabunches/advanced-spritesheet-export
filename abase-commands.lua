@@ -10,9 +10,9 @@ local function ExportSpritesheetAdvanced()
 
     local spr = Sprite(app.sprite)
 
+    l.RevealLayers(spr.layers)
     l.DeleteLayers(spr, spr.layers)
     l.FlattenLayers(spr.layers)
-    l.RevealLayers(spr.layers)
 
     app.command.ExportSpriteSheet {
         splitLayers = true
@@ -46,7 +46,7 @@ local function ToggleExportAsSprite()
             merge = true
         end
     end
-    
+
     for _, layer in ipairs(app.range.layers) do
         p.SetMerged(layer, merge)
         c.SetColorFromRoot(layer)

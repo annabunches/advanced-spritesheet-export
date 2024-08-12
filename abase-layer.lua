@@ -34,7 +34,6 @@ local function FlattenLayers(layers)
 end
 
 -- Makes all layers visible.
--- This should be called after deleteLayers and flattenLayers
 local function RevealLayers(layers)
     for _, layer in ipairs(layers) do
         if layer.isGroup then
